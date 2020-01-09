@@ -20,11 +20,10 @@ namespace SuncoastOverflowAPI.Controllers
     }
 
     [HttpGet]
+    //https://localhost:5001/api/Search?searchTerm=who
     public async Task<ActionResult> SearchQuestions([FromQuery]string searchTerm)
     {
-      var results=db.Questions.Where(question=>question.Title.ToLower().Contains(searchTerm.ToLower()) ||
-      question.Description.ToLower().Contains(searchTerm.ToLower()) ||
-      question.Body.ToLower().Contains(searchTerm.ToLower()));
+      var results=db.Questions.Where(question=>question.Title.ToLower().Contains(searchTerm.ToLower()) || question.Description.ToLower().Contains(searchTerm.ToLower()) || question.Body.ToLower().Contains(searchTerm.ToLower()));
       var query=new SearchQuery
       {
         SearchTerm = searchTerm
@@ -35,6 +34,7 @@ namespace SuncoastOverflowAPI.Controllers
     }
 
     [HttpGet("queries")]
+    //https://localhost:5001/api/Search/queries
     public async Task<ActionResult> GetRecentSearchQueries()
     {
       var queries = db.SearchQueries.OrderByDescending(o=>o.TimeStamp).Take(10);
