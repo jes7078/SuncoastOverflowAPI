@@ -26,6 +26,18 @@ public class QuestionController : ControllerBase
     return await db.Questions.OrderBy(o=>o.Title).ToListAsync();
   }
 
+   //Get: api/Question/5
+  [HttpGet("{id}")]
+  public async Task<ActionResult<Question>> GetQuestion(int id)
+  {
+    var question = await db.Questions.FindAsync(id);
+    if (question==null)
+    {
+      return NotFound();
+    }
+    return question;
+  }
+
   //PUT: api/Question/5
   [HttpPut("{id}")]
   public async Task<IActionResult> PutQuestion(int id, Question question)
@@ -63,7 +75,7 @@ public class QuestionController : ControllerBase
     return Ok(question);
   }
 
-  //DELETE: api/Park/5
+  //DELETE: api/Question/5
   [HttpDelete("{id}")]
   public async Task<ActionResult<Question>> DeleteQuestion(int id)
   {
