@@ -10,6 +10,8 @@ namespace SuncoastOverflowAPI.Models
 
 public DbSet<Question> Questions {get;set;}
 public DbSet<Answer> Answers {get;set;}
+
+public DbSet<SearchQuery> SearchQueries {get; set;}
     private string ConvertPostConnectionToConnectionString(string connection)
     {
       var _connection = connection.Replace("postgres://", String.Empty);
