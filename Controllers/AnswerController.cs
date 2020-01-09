@@ -63,7 +63,8 @@ public class AnswerController : ControllerBase
         throw;
       }
     }
-    return NoContent();
+    // return NoContent();
+    return Ok(answer);
   }
 
   //POST: api/Answer

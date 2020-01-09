@@ -30,7 +30,7 @@ public class QuestionController : ControllerBase
   [HttpGet("{id}")]
   public async Task<ActionResult<Question>> GetQuestion(int id)
   {
-    var question = await db.Questions.FindAsync(id);
+    var question = await db.Questions.Include(i=>i.Answers).FirstOrDefaultAsync(f=>f.Id==id);
     if (question==null)
     {
       return NotFound();

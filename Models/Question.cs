@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,6 +9,8 @@ namespace SuncoastOverflowAPI.Models{
     public string Title{get;set;}
     public string Body{get;set;}
     public string Description{get;set;}
+
+    public DateTime TimeStamp{get;set;} = DateTime.UtcNow;
 
     public int VoteCount{get;set;}
 
